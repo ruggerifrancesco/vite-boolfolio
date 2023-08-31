@@ -1,23 +1,25 @@
 <template>
-    <!-- Pagination Buttons -->
-    <div class="pagination-buttons mb-3 d-flex gap-2">
-        <button @click="changePage('prev')" :disabled="!prevPageUrl" class="btn btn-primary">Previous</button>
-        <button @click="changePage('next')" :disabled="!nextPageUrl" class="btn btn-success">Next</button>
-    </div>
-
-    <main>
-        <div class="card" v-for="project in projects">
-            <img v-if="project.image.startsWith('http')" :src="project.image" :alt="project.title">
-            <img v-else :src="'http://127.0.0.1:8000/storage/' + project.image" :alt="project.title">
-            <div class="card-body">
-              <h5 class="card-title">{{ project.title }}</h5>
-              <p class="card-text">
-                {{ project.description }}
-              </p>
-              <a href="#" class="btn btn-primary">Show More</a>
-            </div>
+    <section class="projects-index">
+        <!-- Pagination Buttons -->
+        <div class="pagination-buttons mb-3 d-flex gap-2">
+            <button @click="changePage('prev')" :disabled="!prevPageUrl" class="btn btn-primary">Previous</button>
+            <button @click="changePage('next')" :disabled="!nextPageUrl" class="btn btn-success">Next</button>
         </div>
-    </main>
+
+        <section class="projects-wrapper">
+            <div class="card" v-for="project in projects">
+                <img v-if="project.image.startsWith('http')" :src="project.image" :alt="project.title">
+                <img v-else :src="'http://127.0.0.1:8000/storage/' + project.image" :alt="project.title">
+                <div class="card-body">
+                  <h5 class="card-title">{{ project.title }}</h5>
+                  <p class="card-text">
+                    {{ project.description }}
+                  </p>
+                  <a href="#" class="btn btn-primary">Show More</a>
+                </div>
+            </div>
+        </section>
+    </section>
 </template>
 <script>
 
@@ -72,11 +74,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+
+.projects-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1900px;
+}
+
+.projects-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
     .card {
         background-color: white;
