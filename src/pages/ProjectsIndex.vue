@@ -24,7 +24,7 @@
 import axios from 'axios';
 
 export default {
-    name: 'AppMain',
+    name: 'ProjectsIndex',
     data() {
         return {
             projects : [],
