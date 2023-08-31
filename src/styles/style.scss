@@ -1,0 +1,16 @@
+body {
+  background-color: #2a2e36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1900px;
+  width: 100%;
+}

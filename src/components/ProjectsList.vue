@@ -1,19 +1,20 @@
 <template>
     <!-- Pagination Buttons -->
-    <div class="pagination-buttons">
-        <button @click="changePage('prev')" :disabled="!prevPageUrl">Previous</button>
-        <button @click="changePage('next')" :disabled="!nextPageUrl">Next</button>
+    <div class="pagination-buttons mb-3 d-flex gap-2">
+        <button @click="changePage('prev')" :disabled="!prevPageUrl" class="btn btn-primary">Previous</button>
+        <button @click="changePage('next')" :disabled="!nextPageUrl" class="btn btn-success">Next</button>
     </div>
 
     <main>
         <div class="card" v-for="project in projects">
-            <img :src="project.image" class="card-img-top" :alt="project.title">
+            <img v-if="project.image.startsWith('http')" :src="project.image" :alt="project.title">
+            <img v-else :src="'http://127.0.0.1:8000/storage/' + project.image" :alt="project.title">
             <div class="card-body">
               <h5 class="card-title">{{ project.title }}</h5>
               <p class="card-text">
                 {{ project.description }}
               </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="#" class="btn btn-primary">Show More</a>
             </div>
         </div>
     </main>
@@ -80,10 +81,11 @@ main {
     .card {
         background-color: white;
         color: black;
-        width: calc((100% / 3) - 1rem);
-        border-radius: 2rem;
+        width: calc((100% / 5) - 0.6rem);
+        border-radius: 0.8rem;
         margin-bottom: 1rem;
-        margin-left: 1rem;
+        margin-left: 0.6rem;
+        overflow: hidden;
 
         img {
             object-fit: contain;
